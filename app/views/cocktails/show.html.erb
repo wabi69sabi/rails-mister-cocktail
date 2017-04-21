@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <h1><%= @cocktail.name %></h1>
+
+      <ul class="list-group">
+        <% @cocktail.doses.each do |dose| %>
+          <li class="list-group-item middle"> <%= dose.ingredient.name %>
+            <div class="center">
+              <em> <%= dose.description %></em>
+            </dic>
+            <div class="margin-left">
+              <%= link_to "Delete", dose_path(dose), class: "label label-warning", method: :delete %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+
+      <%= link_to 'Back', cocktails_path %>
+
+      <%= simple_form_for [@cocktail, @dose] do |f| %>
+        <%= f.input :description, label: "How much liquor?" %>
+        <%= f.association :ingredient %>
+        <%= f.submit "Add Ingredient", class: "btn btn-danger" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
