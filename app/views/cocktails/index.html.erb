@@ -6,22 +6,21 @@
 
 <div class="container">
   <div class="row">
-    <% @cocktails.each do |cocktail| %>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card text-center">
-          <div class="card-header" style="background-image: url('http://www.seriouseats.com/images/2014/11/20141104-cocktail-party-old-fashioneds-holiday-vicky-wasik-3.jpg')">
+  <% @cocktails.each do |cocktail| %>
+     <div class="col-xs-12 col-sm-4 padding">
+          <div class="card soft-edges" style="background-image: url('http://www.seriouseats.com/images/2014/11/20141104-cocktail-party-old-fashioneds-holiday-vicky-wasik-3.jpg')">
+            <%= link_to cocktail.name, cocktail_path(cocktail), class: "btn"%>
           </div>
-          <div class="card-body">
-            <%= link_to cocktail.name, cocktail_path(cocktail) %>
-          </div>
-        </div>
       </div>
     <% end %>
   </div>
 </div>
 
-<div class="container text-center">
+<div class="container text-center padding">
   <!-- app/views/pages/home.html.erb -->
-  <%= cl_image_tag("otobbmysx4xvx4uq1nhs",
-        width: 400, height: 300, crop: :fill) %>
+  <div class="soft-edges padding">
+    <%= cl_image_tag("otobbmysx4xvx4uq1nhs",
+      width: 400, height: 300, crop: :fill) %>
+  </div>
 </div>
+

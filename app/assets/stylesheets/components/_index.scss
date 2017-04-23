@@ -1,3 +1,23 @@
 @import "alert";
 @import "avatars";
 @import "badges";
+@import "cards";
+@import "footer";
+
+.soft-edges img {
+  border-radius: 10px;
+}
+.soft-edges {
+  border-radius: 10px;
+}
+.padding {
+  padding: 10px 10px 10px 10px;
+}
+.wrap {
+  height: auto;
+  margin: 0 auto -80px; /* footer height + space */
+  min-height: 100%;
+  padding: 0 0 80px; /* footer height + space */
+  box-sizing: border-box;
+  overflow: auto;
+}

@@ -16,7 +16,7 @@
         <% end %>
       </ul>
 
-      <%= link_to 'Back', cocktails_path %>
+      <%= link_to 'Back', cocktails_path, class: "btn btn-primary" %>
 
       <%= simple_form_for [@cocktail, @dose] do |f| %>
         <%= f.input :description, label: "How much liquor?" %>

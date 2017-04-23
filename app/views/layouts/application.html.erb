@@ -14,8 +14,10 @@
   </head>
 
   <body>
-  <h1 class="navbar-wagon">RailsMisterCocktail</h1>
-    <%= yield %>
-  <p class="navbar navbar-fixed-bottom">Find me in app/views/...</p>
+  <div class="wrap">
+    <h1 class="navbar-wagon"><%= link_to 'RailsMisterCocktail', cocktails_path, class: "btn" %></h1>
+      <%= yield %>
+  </div>
+  <p class="navbar navbar-fixed-bottom padding" id="footer">Coded in Rails</p>
   </body>
 </html>
