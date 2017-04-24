@@ -42,15 +42,17 @@ drinks = []
   # sample drink_ingredients --> ["Triple sec", "Gin", "Pineapple juice"]
   drink_ingredients = drink_hash['drinks'].first.select { |k,v| k.match(/strIngredient/) && v != "" }.values
   # sample drink_measures --> ["3/4 oz", "3/4 oz", "1 tblsp"]
-  drink_measures = drink_hash['drinks'].first.select { |k,v| k.match(/strMeasure/)}.first(drink_ingredients.size).map { |measure| measure.last.strip }
+  drink_measures = drink_hash['drinks'].first.select { |k,v| k.match(/strMeasure/)}.first(drink_ingredients.size).map { |measure| measure.last }
+  # try to get that pic
+  drink_pic_url = drink_hash['drinks'].first["strDrinkThumb"]
 
-  drinks << { name: drink_name, doses: drink_ingredients.zip(drink_measures).map { |dose| { ingredient: dose.first, description: dose.last }} }
+  drinks << { name: drink_name, picture: drink_pic_url, doses: drink_ingredients.zip(drink_measures).map { |dose| { ingredient: dose.first, description: dose.last }} }
 end
 
-puts "creating drinks and doses..."
+puts "creating drinks and doses...and trying to get them pics"
 
 drinks.each do |drink|
-  cocktail = Cocktail.create(name: drink[:name])
+  cocktail = Cocktail.create(name: drink[:name], photo: drink[:picture])
   drink[:doses].each do |dose|
     Ingredient.create(name: dose[:ingredient]) unless Ingredient.find_by(name: dose[:ingredient])
     ingredient = Ingredient.find_by(name: dose[:ingredient])

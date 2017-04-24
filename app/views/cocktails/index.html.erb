@@ -6,11 +6,21 @@
 
 <div class="container">
   <div class="row">
-  <% @cocktails.each do |cocktail| %>
-     <div class="col-xs-12 col-sm-4 padding">
-          <div class="card soft-edges" style="background-image: url('http://www.seriouseats.com/images/2014/11/20141104-cocktail-party-old-fashioneds-holiday-vicky-wasik-3.jpg')">
+    <% @cocktails.each do |cocktail| %>
+      <div class="col-xs-12 col-sm-4 padding">
+        <div class="card soft-edges" >
+          <% p cocktail.photo %>
+          <% if cocktail.photo %>
+            <div class="card card-header soft-edges" style="background-image: url('<%= cocktail.photo%>')">
+            </div>
+          <% else %>
+            <div class="card card-header soft-edges" style="background-image: url('http://www.seriouseats.com/images/2014/11/20141104-cocktail-party-old-fashioneds-holiday-vicky-wasik-3.jpg')">
+            </div>
+          <% end%>
+          <div class="card-body">
             <%= link_to cocktail.name, cocktail_path(cocktail), class: "btn"%>
           </div>
+        </div>
       </div>
     <% end %>
   </div>
